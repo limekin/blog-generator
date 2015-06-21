@@ -1,0 +1,76 @@
+---
+title: Keeping a set of techniques
+date: 2014-10-13 22:06:00 UTC
+tags: ruby, opinions, development
+---
+
+%p
+    After running around with tutorial projects backed with Sinatra for a while, I actually got myself into creating 
+    a couple of Facebook apps with Sinatra to help my friend run mini-contests as a part of an event. One of them, 
+    a simple poll application that can host polls, and the other one hosts a few puzzles like Jigsaw, Sudoku and 
+    Gomoku. But since the time was tight I couldn't make the Gomoku or Sudoku in time, only Jigsaws. I should 
+    say still, it was something real and it did went live (felt omg! lol).
+%p
+    It was so much fun creating it and I discovered a great deal of new things ( few of which I didn't really care 
+    about before ) that I can use repetitively to develop simple applications reliably again. Side by side, I was 
+    also exposed to a few new technical things. So here I go with all the things I compiled and made into a set 
+    of techniques I can use.
+
+%h3 Playing Around In Development
+
+%h4 While Setting up and Configuring the application
+
+%p 
+    Now, it's easy to set up an application with the settings you need. For instance : setting up an apps directory 
+    structure, libraries, a database, any social network api keys if any etc. And right when I was here for the first 
+    app, I got the idea (got it the hard way lol) that I shouldn't really go with completely static settings. For 
+    example, never do things like "this = that" in the settings if it isn't something really meant to be static. 
+    Instead, use "this=that depending on the environment" or even "this=that derived from any special case". 
+    The environment I mentioned is in the context of Rack, it can be any of production, test and development.
+%p
+    Environment variables play a key role in the dynamic setup of the application, and that is the main point of 
+    doing this. I learned I should never change settings manually if the conditions or environments differ, and 
+    let the code decide what settings it should use. Also it's way better to pace all the private keys for your app 
+    as environment variables. So take full advantage of it to decide what's suited for the app in different 
+    conditions. And environment variables is a cool concept !
+%p
+    Specifically in Sinatra use groups in Gemfiles. Base settings, databases, and testing tools on Rack.env 
+    environment variable. And also follow consistent directory structure every time you create and app. I'm even 
+    thinking of writing a directory structure builder. And go flexible on it depending on your needs.
+
+%h4 While Coding the main application
+
+%p
+    This side has a lot of potential for nice and clever app inner design. Keep it simple, keep it clean. And 
+    NEVER repeat things. If you find yourself repeating something that is lengthy or even something that only has 
+    slight variations depending on different conditions then you should really go for functions. The advantage is 
+    rather obvious when you imagine the case of changing stuff in them in both styles. Functional style also 
+    encourages readability and eases the tracking of logical flaws.
+%p
+    Modularize your app (either internally or externally). It's very likely that your app will be doing different 
+    functions that are identifiable individually. If you have mixed and messed it all up together, then you should 
+    really break it into different sections. For instance, auth at one part, route handling at one part, helpers 
+    at one part etc, and maybe even use classes to handle things in a damn clean way, but yeah it requires 
+    experience (never bad to start trying now).
+
+%p
+    If there is something like "helpers" section in your framework, go for it and put all the tiny and main utilities 
+    in there.
+%p
+    Issue cool looking logs in the middle of junk logs of your app. This one really saves time in fixing up things 
+    when something goes wrong. Create a simple helper that takes in a message or an error, and shout out a log that 
+    can stand out in the app specific logs. Issue them while you do something important in the app.
+%p
+    Know error handling, it's very effective in fixing your application and letting it recover on the fly. And in 
+    some cases your app might even crash if you don't handle it well. It's also good in case of debugging.
+
+%p
+    Praise the holy power of comments. Even if you are going solo, you should use it. It simple makes your application 
+    code more clean, more readable and handsome (or beautiful ?) along with proper indentation. And it helps in 
+    cases where you are going to re-use some part of the application later in the future. There is also one nice 
+    thing with comments : if you follow a systematic comment style, then when the code becomes large you could 
+    find sections of your code quickly with Ctrl+Fing the comment.
+
+%p
+    Now that's it. I will add things about the technical stuff I got into on another post.
+

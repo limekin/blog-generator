@@ -1,0 +1,23 @@
+.article-preview-listing
+    - articles.each do |article|
+        .article-preview
+            .article-desc
+                %h3
+                    = article.title
+                %p
+                    = article.summary
+            .post-meta-banner
+                %ul.read-more
+                    %li
+                        = link_to "read more", article
+                %ul.post-meta
+                    %li
+                        .meta-value
+                            = formatted_post_date article.date
+                    %li.divider
+                        = '-'  
+                    %li
+                    - unless article.tags.empty?
+                        - article.tags.each do |tag|
+                            .meta-value.meta-tags
+                                = link_to "#{tag}", "/tags/#{tag}.html"

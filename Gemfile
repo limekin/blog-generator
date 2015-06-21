@@ -15,3 +15,4 @@ gem "tzinfo-data", platforms: [:mswin, :mingw]
 
 gem "haml"
 gem "middleman-blog"
+gem "nokogiri"

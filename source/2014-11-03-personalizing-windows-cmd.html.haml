@@ -1,0 +1,93 @@
+---
+title: Personalizing Windows Cmd
+date: 2014-11-03 06:22:01 UTC
+tags: windows, opinions, utilities 
+---
+%p
+    When on Windows the only built-in command console I can use is the cmd. Recently I have 
+    been thinking about the idea of keeping a custom set of commands that be performed by 
+    referencing their associated short names. And they should work every time I use the shell.
+    I also wanted something like an init file that can hold custom settings local to the 
+    shell.
+%p
+    One way I thought of implementing this was by placing a set of .bats on a particular 
+    directory and extending the system PATH environment variable to hold the directory. So 
+    that I can reference the filenames to execute the commands placed inside them.
+
+%p
+    Later I read about the 
+    %code.dos doskey 
+    command I found when I checked the contents of 
+    %code.dos help
+    and it had what I wanted. It has the options to define a macro and even take a 
+    file containing a set of macro definitions. It also felt similar to the alias command
+    found on Linux shells. Then I used it to set it up with the macros I want to use 
+    and it worked cool. I'm sharing the steps I used to set it up below (in case it would help 
+    someone) :
+
+%ol
+    %li
+        %p
+            First decide a directory where you want to keep your cmd stuffs at. Then add it to 
+            your systems PATH. I'm taking "C:\ext_cmd\" as the directory.
+                    
+    %li 
+        %p
+            Next create a file named "init.bat" in that directory. Add whatever settings or 
+            ini commands you like to use on the cmd in there. For example say that I want 
+            to add custom colors, set particular local environment variables, start from my 
+            home etc. And add the doskey command to use the macros.
+        %pre 
+            %code.dos
+                :preserve
+                    rem This is the init.bat file.
+                    rem Colorful cmd LOL.
+                    color 03
+
+                    rem Sets my username.
+                    set USERNAME=limekin
+
+                    rem Navigates to home directory.
+                    %HOMEDRIVE%
+                    cd %HOMEPATH%
+
+                    rem Adds macros from the file named macros.
+                    doskey /MACROFILE=C:\cmd_ext\macros
+
+                    rem Clears up the screen, you don't want it to be messy at start.
+                    cls
+        %p
+            About macros in the next step.
+    %li
+        %p 
+            Creating a file of macro definitions is damn simple, just make a file with or 
+            without any extension. I'm naming it just macros (since I gave that path in init).
+            I'm going to define macros for cd(ing) to different directories, starting up 
+            explorer on a particular directory. Now create macros for them like given below :
+        %pre
+            %code.dos
+                :preserve
+                    rem This is the macro file.
+                    rem I want cd to the directory I work with ruby.
+                    cdrb=cd /D "E:\Closet\Scribble\Ruby"
+
+                    rem I wanna open up the explorer at that directory.
+                    exrb=C:\WINDOWS\explorer "E:\Closet\Scribble\Ruby"
+        %p
+            In case you want to add more than one command in a single macro definition, you 
+            can use the special variable $T to separate out commands.
+    %li
+        %p
+            Now the files are setup. Next thing you have to do is make a special invoke
+            on the cmd. Every time you want to launch your shell start it with 
+            %code
+                cmd /K init
+            you can use all those settings and commands in your terminal now. For more info,
+            I have used AutoHotkey to bind the keys Ctrl+B to launch the cmd with those 
+            params.
+%p
+    Now this all I know of right now. Got any better ways of doing it ? Let me know via 
+    comments. 
+    <img src="http://www.pic4ever.com/images/dancing1.gif" border="0" >
+
+    

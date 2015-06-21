@@ -4,18 +4,25 @@
         %meta{charset:"utf-8"}
         <!-- Always force latest IE rendering engine or request Chrome Frame -->
         %meta{content:"IE=edge,chrome=1", :"http-equiv" => "X-UA-Compatible"}
+        %meta{name: "viewport", content: "width=device-width"}
         <!-- Use title if it's in the page YAML frontmatter -->
         %title
             = current_page.data.title || "The Middleman"
         = stylesheet_link_tag "normalize", "all"
         = javascript_include_tag  "all"
+        <link rel="stylesheet" type="text/css" href="/stylsheets/default.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
 
-    %body{class: "#{page_classes}"}
-        = yield
-    %script
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-56027186-1', 'auto');
-        ga('send', 'pageview');
+        %body{class: "#{page_classes}"}
+            .content-wrapper
+                = partial "nav", :locals => { :pagename =>  current_page.data.pagename }
+                = yield
+    - if settings[:analytics]
+        %script
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-56027186-1', 'auto');
+            ga('send', 'pageview');

@@ -47,9 +47,16 @@
 #   end
 # end
 
+helpers do
+    def formatted_post_date(date)
+	date = DateTime.parse(date) unless date.respond_to? :strftime
+	date.strftime("%B %-d, %Y")
+    end
+end
+
 set :css_dir, 'stylesheets'
 
-set :js_dir, 'javascripts'
+set :js_dir, 'javascript'
 
 set :images_dir, 'images'
 
@@ -69,10 +76,19 @@ configure :build do
 
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
+    set :analytics, true
+end
+
+configure :development do
 end
 
 activate :blog do |blog|
 
-    blog.permalink = "blogs/{year}/{month}/{title}.html"
+    blog.permalink = "blog/{year}/{month}/{title}.html"
     blog.new_article_template = "new_article_template.haml"
+    blog.default_extension = ".haml"
+    blog.layout = "blog_layout"
+    blog.tag_template = "tag.html"
+    blog.summary_length = 200
 end
+

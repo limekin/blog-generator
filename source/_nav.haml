@@ -1,0 +1,9 @@
+%div{id: "header-content"}
+    %nav
+        %ul
+            %li 
+                %a{class: "#{"active" if pagename.eql? "home"}", href:"/"} home
+            %li.divider
+                = '|'
+            %li 
+                %a{class: "#{"active" if pagename.eql? "profile"}", href:"/profile.html"} profile

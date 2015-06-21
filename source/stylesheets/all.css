@@ -1,0 +1,306 @@
+/* Clearing defaults */
+
+body, ul, h1, h2, h3, h4, li, p, a
+{
+    margin:0;
+    padding:0;
+}
+a
+{
+    text-decoration:none;
+    color:white;
+    transition:color .3s;
+}
+a:hover
+{
+    color:silver;
+    
+}
+
+
+body
+{
+    width:100%;
+    max-width:960px;
+    margin:0 auto;
+    
+    font-family:"Open Sans", sans-serif;
+
+    background-color:#282828;
+    color:#bababa;
+}
+p
+{
+    font-size:1em;
+}
+h1,h2,h3,h4,h5,h6
+{
+    font-family:"Roboto Condensed", sans-serif;
+    margin-bottom:10px;
+    color:white;
+    font-weight:500;
+}
+h1
+{
+    color:#00c7e5;
+}
+
+#header-content
+{
+    display:block;
+    position:relative;
+    margin-bottom:20px;
+}
+.content-wrapper
+{
+    padding:0px 20px;
+}
+
+/* Navbar styles */
+nav
+{
+    display:block;
+    width:100%;
+}
+nav ul
+{
+    list-style-type:none;
+    padding:20px 0;
+}
+nav li
+{
+    display:inline-block;
+}
+nav li.divider
+{
+    margin-right:15px;
+    color:gray;
+    font-size:.7em;
+}
+nav a
+{
+
+    margin-right:15px;
+    font-size:.9em;
+    transition:color .3s;
+}
+
+.active
+{
+    font-weight:bold;
+    color:#00c7e5;
+}
+
+/*Preview listings*/
+
+.year-info
+{
+    padding:5px;
+    text-align:center;
+    margin-top:5px;
+    font-size:.8em;
+}
+
+.article-preview-listing
+{
+}
+
+.article-preview
+{
+    width:100%;
+    min-height:135px;
+    box-sizing:border-box;
+    margin-bottom:10px;
+    margin-right:10px;
+    position:relative;
+    transition:background-color .3s;
+
+}
+.article-preview:hover
+{
+    background-color:#333333;
+}
+.article-preview .article-desc
+{
+    padding:20px;
+}
+.article-preview p
+{
+    font-size:.950em;
+}
+
+.article-preview .read-more
+{
+    display:inline-block;
+    position:absolute;
+    right:20px;
+    margin-bottom:5px;
+}
+.article-preview .read-more li, .article-preview .post-meta li
+{
+    display:inline;
+}
+.article-preview .read-more a
+{
+    font-size:.8em;
+}
+.article-preview .read-more a:hover
+{
+}
+
+.article-preview .post-meta
+{
+    display:inline-block;
+    position:absolute;
+    left:20px;
+}
+
+.article-preview .post-meta-banner
+{
+    display:block;
+    padding:5px 10px;
+    box-sizing:border-box;
+    width:100%;
+    min-height:30px;
+    position:absolute;
+    bottom:0px;
+
+}
+
+.article-preview .meta-value, .article-preview .meta-label
+{
+    display:inline-block;
+    font-size:.8em;
+}
+.article-preview .meta-value
+{
+    margin-right:5px;
+    color:#858585;
+}
+.meta-tags
+{
+    margin-right:5px;
+}
+
+.article-preview .divider
+{
+    margin-right:5px;
+    margin-left:5px;
+    color:gray;
+}
+/* ---------------------------------
+/* Single paged posts 
+*/ 
+
+.post
+{
+    max-width:960px;
+    margin:0 auto;
+    margin-bottom:40px;
+    padding:20px;
+}
+
+.post-body
+{
+    margin-top:10px;
+    min-height:500px;
+}
+.post-body p
+{
+    margin-top:10px;
+    line-height:1.8;
+}
+.post-title
+{
+    font-family:"Roboto Condensed", sans-serif;
+}
+.post-image
+{
+    display:block;
+    text-align:center;
+    margin:15px auto;
+}
+.post-image img
+{
+    display:inline-block;
+    height:400px;
+    width:400px;
+}
+
+@media (max-width: 400px) {
+
+    .post-title 
+    {
+	font-size:.9em;
+    }
+    .article-preview .post-meta-banner
+    {
+	position:static;
+    }
+    .post-body p
+    {
+	line-height:1.4;
+	font-size:.840em;
+    }
+    .article-preview .post-meta 
+    {
+	position:static;
+	display:block;
+	width:100%;
+    }
+    .article-preview .post-meta li
+    {
+	display:block;
+    }
+
+    .artcile-preview .read-more
+    {
+	display:block;
+	position:static;
+    }
+    .article-preview .read-more li
+    {
+	display:block;
+    }
+    .article-preview .divider
+    {
+	display:none;
+	visibility:hidden;
+    }
+    
+}
+.post-body h4, .post-body h3, .post-body h5, .post-body h6
+{
+    margin-top:20px;
+}
+
+.post .social-icons
+{
+    text-align:right;
+    margin-top:20px;
+}
+.post .time
+{
+    display:block;
+    color:gray;
+    font-size:.890em;
+    margin-top:10px;
+}
+.post .meta-tags
+{ 
+    display:inline;
+    margin-right:5px;
+}
+
+.section-close-dots
+{
+    text-align:center;
+    font-size:4em;
+    color:silver;
+    font-weight:bold;
+}
+.section-close-dots:hover
+{
+    cursor:pointer;
+}
+

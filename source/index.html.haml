@@ -1,10 +1,10 @@
 ---
-title: Kevin Jayanthan (limekin)
+title: Kevin Jayanthan
+pagename: home
 ---
 
-%h2 Hello there !
-%p
-    This is my new host for my blog. I'm working on it right now, you might see 
-    see weird stuffs popping out here and there occasionally. 
-%p 
-    Trying to complete it asap ! :)
+%h1 Recent Posts
+= partial "article_preview_listing", :locals => {:articles => blog.articles }
+
+.section-close-dots
+    = "- - -"
