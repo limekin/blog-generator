@@ -48,10 +48,10 @@
 # end
 
 helpers do
-    def formatted_post_date(date)
-	date = DateTime.parse(date) unless date.respond_to? :strftime
-	date.strftime("%B %-d, %Y")
-    end
+  def formatted_post_date(date)
+    date = DateTime.parse(date) unless date.respond_to? :strftime
+    date.strftime("%B %-d, %Y")
+  end
 end
 
 set :css_dir, 'stylesheets'
@@ -76,19 +76,18 @@ configure :build do
 
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
-    set :analytics, true
+  set :analytics, true
 end
 
 configure :development do
 end
 
 activate :blog do |blog|
-
-    blog.permalink = "blog/{year}/{month}/{title}.html"
-    blog.new_article_template = "new_article_template.haml"
-    blog.default_extension = ".haml"
-    blog.layout = "blog_layout"
-    blog.tag_template = "tag.html"
-    blog.summary_length = 200
+  blog.permalink = "blog/{year}/{month}/{title}.html"
+  blog.new_article_template = "new_article_template.haml"
+  blog.default_extension = ".haml"
+  blog.layout = "blog_layout"
+  blog.tag_template = "tag.html"
+  blog.summary_length = 200
 end
 
